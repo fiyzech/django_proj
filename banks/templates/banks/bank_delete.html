@@ -1,0 +1,14 @@
+<!-- bank_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Bank</h2>
+  <p>Are you sure you want to delete {{ bank.bank_name }}?</p>
+  
+  <form method="post" action="{% url 'bank_delete' bank.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+  </form>
+
+  <a href="{% url 'bank_list' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

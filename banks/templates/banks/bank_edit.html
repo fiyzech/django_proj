@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card mt-5 shadow" style="background-color: #3498db; color: #fff; font-family: 'Arial', sans-serif;">
+    <div class="card-header bg-dark">
+      <h2 class="mb-0">Edit Bank</h2>
+    </div>
+    <div class="card-body">
+      <form method="post" action="{% url 'bank_edit' bank.id %}" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="{{ form.bank_name.id_for_label }}" class="form-label">Bank Name:</label>
+          {{ form.bank_name }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.routing_number.id_for_label }}" class="form-label">Routing Number:</label>
+          {{ form.routing_number }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.swift_bic.id_for_label }}" class="form-label">SWIFT/BIC:</label>
+          {{ form.swift_bic }}
+        </div>
+        <button type="submit" class="btn btn-success" style="background-color: #2ecc71; border-color: #27ae60;">Save</button>
+      </form>
+      <a href="{% url 'bank_list' %}" class="btn btn-secondary" style="background-color: #e74c3c; border-color: #c0392b;">Cancel</a>
+    </div>
+  </div>
+{% endblock %}

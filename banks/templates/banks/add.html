@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card mt-5">
+    <div class="card-header">
+      <h2>Add Banks</h2>
+    </div>
+    <div class="card-body">
+      <form method="post" action="{% url 'add_banks' %}" class="mb-3">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="num_banks" class="form-label">Number of Banks to Add:</label>
+            <input type="number" name="num_banks" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Banks</button>
+      </form>
+
+      <!-- Display the num_banks variable -->
+      {% if num_banks %}
+          <div class="alert alert-success mt-3" role="alert">
+            Added {{ num_banks }} banks.
+          </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

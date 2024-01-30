@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="mt-4 mb-3">Bank List</h2>
+
+  <ul class="list-group">
+    {% for bank in banks %}
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ bank.bank_name }}</strong> - {{ bank.routing_number }} - {{ bank.swift_bic }}
+          </div>
+          <div class="btn-group">
+            <a href="{% url 'bank_edit' bank.id %}" class="btn btn-primary btn-sm mx-1">Edit</a>
+            <a href="{% url 'bank_delete' bank.id %}" class="btn btn-danger btn-sm mx-1">Delete</a>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
